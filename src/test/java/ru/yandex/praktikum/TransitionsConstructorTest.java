@@ -4,7 +4,7 @@ import com.codeborne.selenide.Selenide;
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.Test;
-import ru.yandex.praktikum.pageObject.MainPage;
+import ru.yandex.praktikum.page_object.MainPage;
 
 public class TransitionsConstructorTest {
     MainPage page = Selenide.open(MainPage.BASE_URL, MainPage.class);
@@ -18,13 +18,12 @@ public class TransitionsConstructorTest {
     @Description("Проверка, что по клику на раздел происходит переключение ингредиентов")
     public void switchIngredientsTest() {
         page.clickSouse();
-        page.checkBunCollections( typeSous);
+        page.checkBunCollections(typeSous);
         page.clickBun();
         page.checkBunCollections(typeBun);
         page.clickFilling();
-        page.checkBunCollections( typeFiling);
+        page.checkBunCollections(typeFiling);
         page.clickBun();
-
     }
 
     @Test
@@ -32,9 +31,7 @@ public class TransitionsConstructorTest {
     @Description("Проверка, что ингредиенты доступны при прокрутке списка")
     public void ScrollIngredientsTest() {
         page.checkBunCollections(typeSous);
-        page.checkBunCollections( typeFiling);
+        page.checkBunCollections(typeFiling);
         page.checkBunCollections(typeBun);
-
-
     }
 }

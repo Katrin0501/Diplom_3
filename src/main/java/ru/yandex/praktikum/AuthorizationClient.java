@@ -1,7 +1,6 @@
 package ru.yandex.praktikum;
 
 
-
 public class AuthorizationClient {
 
     private String email;
@@ -9,7 +8,7 @@ public class AuthorizationClient {
 
     @Override
     public String toString() {
-        return String.format("AuthorizationClient{email='%s', password='%s'}",email,password);
+        return String.format("AuthorizationClient{email='%s', password='%s'}", email, password);
     }
 
     public String getPassword() {

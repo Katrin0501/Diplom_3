@@ -1,4 +1,5 @@
 package ru.yandex.praktikum;
+
 import com.codeborne.selenide.Selenide;
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
@@ -6,7 +7,8 @@ import io.restassured.response.Response;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import ru.yandex.praktikum.pageObject.*;
+import ru.yandex.praktikum.page_object.*;
+
 import static org.junit.Assert.assertEquals;
 import static ru.yandex.praktikum.Api.*;
 import static ru.yandex.praktikum.User.getRandomUser;
@@ -20,7 +22,6 @@ public class AuthorizationUserTest {
 
     @Before
     public void init() {
-
         user = getRandomUser();
         sucUserReg(user);
     }
@@ -43,7 +44,6 @@ public class AuthorizationUserTest {
         userLogin.LoginUser(user.getEmail(), user.getPassword());
         UserProfile userProfile = page.clickLKProfile();
         assertEquals(userProfile.getLinkProfile(), "Профиль");
-
     }
 
     @Test
@@ -56,7 +56,6 @@ public class AuthorizationUserTest {
         userLogin.LoginUser(user.getEmail(), user.getPassword());
         UserProfile userProfile = page.clickLKProfile();
         assertEquals(userProfile.getLinkProfile(), "Профиль");
-
     }
 
     @Test
@@ -70,7 +69,6 @@ public class AuthorizationUserTest {
         userLogin.LoginUser(user.getEmail(), user.getPassword());
         UserProfile userProfile = page.clickLKProfile();
         assertEquals(userProfile.getLinkProfile(), "Профиль");
-
     }
 
     @After
@@ -81,8 +79,5 @@ public class AuthorizationUserTest {
         if (token != null) {
             deleteUser(token);
         }
-
     }
-
-
 }

@@ -3,9 +3,11 @@ package ru.yandex.praktikum;
 import io.qameta.allure.Step;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+
 import java.util.Map;
+
 import static io.restassured.RestAssured.given;
-import static ru.yandex.praktikum.pageObject.MainPage.BASE_URL;
+import static ru.yandex.praktikum.page_object.MainPage.BASE_URL;
 
 public class Api {
 
@@ -20,7 +22,7 @@ public class Api {
                 .then().log().all().extract();
 
     }
-//   @Step("Авторизация Юзера")
+
     public static Response authUserReg(AuthorizationClient authorizationClient) {
 
         return (Response) given()
@@ -30,8 +32,6 @@ public class Api {
                 .post(BASE_URL + "api/auth/login")
                 .then().log().all().extract();
     }
-
-
 
     @Step("Удаление Юзера")
     public static Boolean deleteUser(String token) {

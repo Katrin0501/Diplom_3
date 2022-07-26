@@ -7,9 +7,10 @@ import io.restassured.response.Response;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import ru.yandex.praktikum.pageObject.MainPage;
-import ru.yandex.praktikum.pageObject.UserLogin;
-import ru.yandex.praktikum.pageObject.UserProfile;
+import ru.yandex.praktikum.page_object.MainPage;
+import ru.yandex.praktikum.page_object.UserLogin;
+import ru.yandex.praktikum.page_object.UserProfile;
+
 import static org.junit.Assert.assertEquals;
 import static ru.yandex.praktikum.Api.*;
 import static ru.yandex.praktikum.User.getRandomUser;
@@ -22,15 +23,12 @@ public class ConstructorAndLogoSBTest {
 
     @Before
     public void init() {
-
-
         user = getRandomUser();
         sucUserReg(user);
         UserLogin userLogin = page.clickLKAuth();
         userLogin.LoginUser(user.getEmail(), user.getPassword());
 
     }
-
 
     @Test
     @DisplayName("Переход из личного кабинета по клику на лого SB") // имя теста
@@ -50,7 +48,6 @@ public class ConstructorAndLogoSBTest {
         assertEquals(page.getTextSB(), "Соберите бургер");
     }
 
-
     @After
     public void clear() {
         AuthorizationClient authorizationClient = new AuthorizationClient(user.getEmail(), user.getPassword());
@@ -59,7 +56,5 @@ public class ConstructorAndLogoSBTest {
         if (token != null) {
             deleteUser(token);
         }
-
     }
-
 }

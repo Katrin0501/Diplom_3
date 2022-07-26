@@ -7,10 +7,11 @@ import io.restassured.response.Response;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import ru.yandex.praktikum.pageObject.MainPage;
-import ru.yandex.praktikum.pageObject.UserLogin;
-import ru.yandex.praktikum.pageObject.UserProfile;
-import ru.yandex.praktikum.pageObject.UserRegistration;
+import ru.yandex.praktikum.page_object.MainPage;
+import ru.yandex.praktikum.page_object.UserLogin;
+import ru.yandex.praktikum.page_object.UserProfile;
+import ru.yandex.praktikum.page_object.UserRegistration;
+
 import static org.junit.Assert.assertEquals;
 import static ru.yandex.praktikum.Api.authUserReg;
 import static ru.yandex.praktikum.Api.deleteUser;
@@ -36,8 +37,6 @@ public class RegistrationUserTest {
         userLogin.LoginUser(user.getEmail(), user.getPassword());
         UserProfile userProfile = page.clickLKProfile();
         assertEquals(userProfile.getLinkProfile(), "Профиль");
-
-
     }
 
     @Test
@@ -50,9 +49,7 @@ public class RegistrationUserTest {
         userLogin.LoginUser(user.getEmail(), user.getPassword());
         UserProfile userProfile = page.clickLKProfile();
         assertEquals(userProfile.getLinkProfile(), "Профиль");
-
     }
-
 
     @Test
     @DisplayName("Некорректный пароль при регистрации") // имя теста
@@ -65,7 +62,6 @@ public class RegistrationUserTest {
         UserRegistration userRegistration = userLogin.linkRegister();
         userRegistration.setFieldRegistrationForm(user.getName(), user.getEmail(), password);
         assertEquals(userRegistration.mesWrongPas(), "Некорректный пароль");
-
     }
 
     @After
@@ -77,5 +73,4 @@ public class RegistrationUserTest {
             deleteUser(token);
         }
     }
-
 }

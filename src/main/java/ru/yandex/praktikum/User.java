@@ -38,8 +38,8 @@ public class User {
         String password = RandomStringUtils.randomAlphabetic(6);
         String name = RandomStringUtils.randomAlphabetic(10);
         return new User(email, password, name);
-
     }
+
     @Override
     public String toString() {
         return String.format("UserCreation{email='%s', password='%s', name='%s'}", email, password, name);

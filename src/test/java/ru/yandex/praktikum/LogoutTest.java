@@ -1,7 +1,6 @@
 package ru.yandex.praktikum;
 
 import com.codeborne.selenide.Selenide;
-
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
@@ -9,19 +8,16 @@ import org.hamcrest.CoreMatchers;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import ru.yandex.praktikum.pageObject.MainPage;
-import ru.yandex.praktikum.pageObject.UserLogin;
-import ru.yandex.praktikum.pageObject.UserProfile;
-import static java.awt.SystemColor.text;
+import ru.yandex.praktikum.page_object.MainPage;
+import ru.yandex.praktikum.page_object.UserLogin;
+import ru.yandex.praktikum.page_object.UserProfile;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static ru.yandex.praktikum.Api.*;
 import static ru.yandex.praktikum.User.getRandomUser;
 
 
-
 public class LogoutTest {
-
-
 
     User user;
     String token;
@@ -29,8 +25,6 @@ public class LogoutTest {
 
     @Before
     public void init() {
-
-
         user = getRandomUser();
         sucUserReg(user);
     }
@@ -54,7 +48,5 @@ public class LogoutTest {
         if (token != null) {
             deleteUser(token);
         }
-
     }
-
 }

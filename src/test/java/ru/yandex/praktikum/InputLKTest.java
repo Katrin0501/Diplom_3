@@ -8,9 +8,9 @@ import org.hamcrest.CoreMatchers;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import ru.yandex.praktikum.pageObject.MainPage;
-import ru.yandex.praktikum.pageObject.UserLogin;
-import ru.yandex.praktikum.pageObject.UserProfile;
+import ru.yandex.praktikum.page_object.MainPage;
+import ru.yandex.praktikum.page_object.UserLogin;
+import ru.yandex.praktikum.page_object.UserProfile;
 
 import static java.awt.SystemColor.text;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -27,7 +27,6 @@ public class InputLKTest {
 
     @Before
     public void init() {
-
         user = getRandomUser();
         sucUserReg(user);
     }
@@ -39,7 +38,7 @@ public class InputLKTest {
         UserLogin userLogin = page.clickLKAuth();
         String textInput = userLogin.getInputText();
         assertEquals(UserLogin.Login_URL, "https://stellarburgers.nomoreparties.site/login");
-        assertThat("Ожидается текст: " + text,textInput, CoreMatchers.containsString("Вход"));
+        assertThat("Ожидается текст: " + text, textInput, CoreMatchers.containsString("Вход"));
     }
 
     @Test
@@ -60,7 +59,6 @@ public class InputLKTest {
         userLogin.LoginUser(user.getEmail(), user.getPassword());
         UserProfile userProfile = page.clickLKProfile();
         assertEquals(userProfile.getLinkProfile(), "Профиль");
-
     }
 
     @Test
@@ -70,8 +68,9 @@ public class InputLKTest {
         page.clickOrderFeed();
         UserLogin userLogin = page.clickLKAuth();
         String textInput = userLogin.getInputText();
-        assertThat("Ожидается текст: " + text,textInput, CoreMatchers.containsString("Вход"));
+        assertThat("Ожидается текст: " + text, textInput, CoreMatchers.containsString("Вход"));
     }
+
     @Test
     @DisplayName("Переход по клику на «Личный кабинет» из Ленты заказов без авторизации") // имя теста
     @Description("Проверка, что по клику на ЛК попадаешь на страницу Профиль")
@@ -81,7 +80,6 @@ public class InputLKTest {
         page.clickOrderFeed();
         UserProfile userProfile = page.clickLKProfile();
         assertEquals(userProfile.getLinkProfile(), "Профиль");
-
     }
 
     @Test
@@ -94,8 +92,6 @@ public class InputLKTest {
         userProfile.clickLinkPurchaseHistory();
         page.clickLKProfile();
         assertEquals(userProfile.getLinkProfile(), "Профиль");
-
-
     }
 
     @Test
@@ -106,7 +102,6 @@ public class InputLKTest {
         userLogin.LoginUser(user.getEmail(), user.getPassword());
         UserProfile userProfile = page.clickLKProfile();
         userProfile.pressExitLink();
-//        System.out.println("");
         page.clickLKAuth();
         assertThat("Ожидается текст: " + userLogin.getInputText(), CoreMatchers.containsString("Вход"));
     }
@@ -120,6 +115,7 @@ public class InputLKTest {
         page.clickLKAuth();
         assertThat("Ожидается текст: " + userLogin.getInputText(), CoreMatchers.containsString("Вход"));
     }
+
     @Test
     @DisplayName("Переход по клику на «Личный кабинет» перейдя по ссылку Восстановить пароль") // имя теста
     @Description("Проверка, что по клику на ЛК попадаешь на страницу Вход")
@@ -130,7 +126,6 @@ public class InputLKTest {
         assertThat("Ожидается текст: " + userLogin.getInputText(), CoreMatchers.containsString("Вход"));
     }
 
-
     @After
     public void clear() {
         AuthorizationClient authorizationClient = new AuthorizationClient(user.getEmail(), user.getPassword());
@@ -139,8 +134,5 @@ public class InputLKTest {
         if (token != null) {
             deleteUser(token);
         }
-//
     }
-
-
 }
